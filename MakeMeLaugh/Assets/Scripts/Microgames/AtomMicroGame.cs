@@ -40,4 +40,5 @@ public class AtomMicroGame : MicroGamesBase
             spawnedAtomObjects[i].GetComponent<Button>().interactable = false;
         }
     }
+
 }

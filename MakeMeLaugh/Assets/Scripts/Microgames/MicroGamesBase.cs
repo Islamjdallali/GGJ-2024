@@ -10,12 +10,16 @@ public class MicroGamesBase : MonoBehaviour
     public float duration;
 
     [SerializeField] private GameObject punchlineGO;
+    [SerializeField] private MMLGameManager gameManager;
+    [SerializeField] private Animator stageAnim;
 
     public void Init()
     {
         Debug.Log("Initialised Microgame");
         punchlineGO.SetActive(false);
         timer = duration;
+        gameManager = GameObject.Find("GameManager").GetComponent<MMLGameManager>();
+        stageAnim = GameObject.Find("Stage").GetComponent<Animator>();
         //log any null references here
     }
 
@@ -26,9 +30,24 @@ public class MicroGamesBase : MonoBehaviour
         if ( timer <= 0)
         {
             timer = 0;
-            //fail
-            isCompleted = false;
+            DetermineResult();
         }
+    }
+
+    private void DetermineResult()
+    {
+        if (isCompleted) 
+        {
+            gameManager.WinMicroGame();
+        }
+        else
+        {
+            gameManager.health -= 1;
+        }
+
+        stageAnim.Play("TransitionToStage");
+
+        Destroy(this.gameObject);
     }
 
     public void ShowPunchline()

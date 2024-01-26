@@ -41,5 +41,6 @@ public class MicrogameSelector : MonoBehaviour
     public void SpawnMicroGame()
     {
        Instantiate(microGames[Random.Range(0, System.Enum.GetValues(typeof(EMicrogames)).Length)]);
+        microGameJoke[Random.Range(0, System.Enum.GetValues(typeof(EMicrogames)).Length)].SetActive(false);
     }
 }

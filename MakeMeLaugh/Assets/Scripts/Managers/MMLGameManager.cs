@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class MMLGameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int score;
+    public int health;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private Animator standupAnim;
+
+    public void WinMicroGame()
     {
-        
+        standupAnim.Play("Win");
+        score += 1;
     }
 }
