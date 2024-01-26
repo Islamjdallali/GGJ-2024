@@ -9,9 +9,12 @@ public class MicroGamesBase : MonoBehaviour
     public float timer;
     public float duration;
 
+    [SerializeField] private GameObject punchlineGO;
+
     public void Init()
     {
         Debug.Log("Initialised Microgame");
+        punchlineGO.SetActive(false);
         timer = duration;
         //log any null references here
     }
@@ -26,5 +29,10 @@ public class MicroGamesBase : MonoBehaviour
             //fail
             isCompleted = false;
         }
+    }
+
+    public void ShowPunchline()
+    {
+        punchlineGO.SetActive(true);
     }
 }

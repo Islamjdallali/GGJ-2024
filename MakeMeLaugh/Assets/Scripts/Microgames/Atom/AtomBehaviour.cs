@@ -22,7 +22,8 @@ public class AtomBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        atomMicroGame = GameObject.Find("Atom Microgame Canvas").GetComponent<AtomMicroGame>();
+        //god forgive me for this but I am not bothered to implement a better solution
+        atomMicroGame = GameObject.Find("Atom Microgame Canvas(Clone)").GetComponent<AtomMicroGame>();
 
         for (int i = 0; i < electrons.Length; i++)
         {
