@@ -5,13 +5,13 @@ using UnityEngine;
 public class MicroGamesBase : MonoBehaviour
 {
     public bool isCompleted;
-    public int speed;
     public float timer;
     public float duration;
+    public MMLGameManager gameManager;
 
     [SerializeField] private GameObject punchlineGO;
-    [SerializeField] private MMLGameManager gameManager;
     [SerializeField] private Animator stageAnim;
+    [SerializeField] private AudioSource minigameMusic;
 
     public void Init()
     {
@@ -20,12 +20,14 @@ public class MicroGamesBase : MonoBehaviour
         timer = duration;
         gameManager = GameObject.Find("GameManager").GetComponent<MMLGameManager>();
         stageAnim = GameObject.Find("Stage").GetComponent<Animator>();
+        minigameMusic = GameObject.Find("Minigame Music").GetComponent<AudioSource>();
+        minigameMusic.Play();
         //log any null references here
     }
 
     public void Tick()
     {
-        timer -= Time.deltaTime * speed;
+        timer -= Time.deltaTime * gameManager.gameSpeed;
 
         if ( timer <= 0)
         {

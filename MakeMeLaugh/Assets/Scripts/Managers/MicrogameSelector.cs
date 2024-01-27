@@ -8,11 +8,14 @@ public class MicrogameSelector : MonoBehaviour
     [SerializeField] private Animator transitionToMicrogameAnim;
     [SerializeField] private GameObject[] microGameJoke;
     [SerializeField] private MMLGameManager gameManager;
+    [SerializeField] private AudioSource jingleIn;
+    private int randNo;
 
     public bool isChoosing;
     public enum EMicrogames
     {
-        eAtoms
+        eAtoms,
+        eNoah
     }
 
     public EMicrogames microgamesEnum;
@@ -29,6 +32,7 @@ public class MicrogameSelector : MonoBehaviour
     {
         if (isChoosing && gameManager.health > 0)
         {
+            jingleIn.Play();
             ChooseMicroGameJoke();
             isChoosing = false;
         }
@@ -36,12 +40,13 @@ public class MicrogameSelector : MonoBehaviour
 
     void ChooseMicroGameJoke()
     {
-        microGameJoke[Random.Range(0, System.Enum.GetValues(typeof(EMicrogames)).Length)].SetActive(true);
+        randNo = Random.Range(0, System.Enum.GetValues(typeof(EMicrogames)).Length);
+        microGameJoke[randNo].SetActive(true);
     }
 
     public void SpawnMicroGame()
     {
-       Instantiate(microGames[Random.Range(0, System.Enum.GetValues(typeof(EMicrogames)).Length)]);
-        microGameJoke[Random.Range(0, System.Enum.GetValues(typeof(EMicrogames)).Length)].SetActive(false);
+       Instantiate(microGames[randNo]);
+        microGameJoke[randNo].SetActive(false);
     }
 }
