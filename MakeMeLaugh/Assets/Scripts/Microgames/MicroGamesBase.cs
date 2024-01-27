@@ -32,6 +32,11 @@ public class MicroGamesBase : MonoBehaviour
             timer = 0;
             DetermineResult();
         }
+
+        if (isCompleted) 
+        {
+            punchlineGO.SetActive(true);
+        }
     }
 
     private void DetermineResult()
@@ -42,7 +47,7 @@ public class MicroGamesBase : MonoBehaviour
         }
         else
         {
-            gameManager.health -= 1;
+            gameManager.LoseMicroGame();
         }
 
         stageAnim.Play("TransitionToStage");
