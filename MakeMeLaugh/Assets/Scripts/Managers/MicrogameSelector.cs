@@ -7,6 +7,7 @@ public class MicrogameSelector : MonoBehaviour
     [SerializeField] private GameObject[] microGames;
     [SerializeField] private Animator transitionToMicrogameAnim;
     [SerializeField] private GameObject[] microGameJoke;
+    [SerializeField] private MMLGameManager gameManager;
 
     public bool isChoosing;
     public enum EMicrogames
@@ -26,7 +27,7 @@ public class MicrogameSelector : MonoBehaviour
 
     private void Update()
     {
-        if (isChoosing)
+        if (isChoosing && gameManager.health > 0)
         {
             ChooseMicroGameJoke();
             isChoosing = false;
