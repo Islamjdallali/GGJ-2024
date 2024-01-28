@@ -4,10 +4,10 @@ Properties {
 	_FaceTex			("Face Texture", 2D) = "white" {}
 	_FaceUVSpeedX		("Face UV Speed X", Range(-5, 5)) = 0.0
 	_FaceUVSpeedY		("Face UV Speed Y", Range(-5, 5)) = 0.0
-	[HDR]_FaceColor		("Face Color", Color) = (1,1,1,1)
+	_FaceColor			("Face Color", Color) = (1,1,1,1)
 	_FaceDilate			("Face Dilate", Range(-1,1)) = 0
 
-	[HDR]_OutlineColor	("Outline Color", Color) = (0,0,0,1)
+	_OutlineColor		("Outline Color", Color) = (0,0,0,1)
 	_OutlineTex			("Outline Texture", 2D) = "white" {}
 	_OutlineUVSpeedX	("Outline UV Speed X", Range(-5, 5)) = 0.0
 	_OutlineUVSpeedY	("Outline UV Speed Y", Range(-5, 5)) = 0.0
@@ -21,7 +21,7 @@ Properties {
 	_BevelRoundness		("Bevel Roundness", Range(0,1)) = 0
 
 	_LightAngle			("Light Angle", Range(0.0, 6.2831853)) = 3.1416
-	[HDR]_SpecularColor	("Specular", Color) = (1,1,1,1)
+	_SpecularColor		("Specular", Color) = (1,1,1,1)
 	_SpecularPower		("Specular", Range(0,4)) = 2.0
 	_Reflectivity		("Reflectivity", Range(5.0,15.0)) = 10
 	_Diffuse			("Diffuse", Range(0,1)) = 0.5
@@ -35,15 +35,15 @@ Properties {
 	_ReflectOutlineColor("Reflection Color", Color) = (0,0,0,1)
 	_Cube 				("Reflection Cubemap", Cube) = "black" { /* TexGen CubeReflect */ }
 	_EnvMatrixRotation	("Texture Rotation", vector) = (0, 0, 0, 0)
+		
 
-
-	[HDR]_UnderlayColor	("Border Color", Color) = (0,0,0, 0.5)
+	_UnderlayColor		("Border Color", Color) = (0,0,0, 0.5)
 	_UnderlayOffsetX	("Border OffsetX", Range(-1,1)) = 0
 	_UnderlayOffsetY	("Border OffsetY", Range(-1,1)) = 0
 	_UnderlayDilate		("Border Dilate", Range(-1,1)) = 0
 	_UnderlaySoftness	("Border Softness", Range(0,1)) = 0
 
-	[HDR]_GlowColor			("Color", Color) = (0, 1, 0, 0.5)
+	_GlowColor			("Color", Color) = (0, 1, 0, 0.5)
 	_GlowOffset			("Offset", Range(-1,1)) = 0
 	_GlowInner			("Inner", Range(0,1)) = 0.05
 	_GlowOuter			("Outer", Range(0,1)) = 0.05
@@ -68,7 +68,7 @@ Properties {
 
 	_VertexOffsetX		("Vertex OffsetX", float) = 0
 	_VertexOffsetY		("Vertex OffsetY", float) = 0
-
+	
 	_MaskCoord			("Mask Coordinates", vector) = (0, 0, 32767, 32767)
 	_ClipRect			("Clip Rect", vector) = (-32767, -32767, 32767, 32767)
 	_MaskSoftnessX		("Mask SoftnessX", float) = 0
@@ -80,8 +80,13 @@ Properties {
 	_StencilWriteMask	("Stencil Write Mask", Float) = 255
 	_StencilReadMask	("Stencil Read Mask", Float) = 255
 
-	_CullMode			("Cull Mode", Float) = 0
 	_ColorMask			("Color Mask", Float) = 15
+
+	// Add properties
+	_DoodleMaxOffset    ("Doodle Max Offset", vector) = (0.01, 0.01, 0, 0)
+	_DoodleFrameTime    ("Doodle Frame Time", Float) = 5
+	_DoodleFrameCount   ("Doodle Frame Count", Int) = 100
+	_DoodleNoiseScale   ("Doodle Noise Scale", vector) = (0.1, 0.1, 0, 0)
 }
 
 SubShader {
@@ -97,7 +102,7 @@ SubShader {
 	{
 		Ref [_Stencil]
 		Comp [_StencilComp]
-		Pass [_StencilOp]
+		Pass [_StencilOp] 
 		ReadMask [_StencilReadMask]
 		WriteMask [_StencilWriteMask]
 	}
@@ -121,11 +126,15 @@ SubShader {
 
 		#pragma multi_compile __ UNITY_UI_CLIP_RECT
 		#pragma multi_compile __ UNITY_UI_ALPHACLIP
+		// Add toggle
+		#pragma multi_compile __ DOODLE_ON
 
 		#include "UnityCG.cginc"
 		#include "UnityUI.cginc"
 		#include "TMPro_Properties.cginc"
 		#include "TMPro.cginc"
+		// Add helper file
+		#include "UtilsCG.cginc"
 
 		struct vertex_t {
 			UNITY_VERTEX_INPUT_INSTANCE_ID
@@ -146,7 +155,7 @@ SubShader {
 			float4	param			: TEXCOORD1;		// alphaClip, scale, bias, weight
 			float4	mask			: TEXCOORD2;		// Position in object space(xy), pixel Size(zw)
 			float3	viewDir			: TEXCOORD3;
-
+			
 		#if (UNDERLAY_ON || UNDERLAY_INNER)
 			float4	texcoord2		: TEXCOORD4;		// u,v, scale, bias
 			fixed4	underlayColor	: COLOR1;
@@ -187,7 +196,7 @@ SubShader {
 			float bias =(.5 - weight) + (.5 / scale);
 
 			float alphaClip = (1.0 - _OutlineWidth * _ScaleRatioA - _OutlineSoftness * _ScaleRatioA);
-
+		
 		#if GLOW_ON
 			alphaClip = min(alphaClip, 1.0 - _GlowOffset * _ScaleRatioB - _GlowOuter * _ScaleRatioB);
 		#endif
@@ -216,7 +225,7 @@ SubShader {
 			float2 faceUV = TRANSFORM_TEX(textureUV, _FaceTex);
 			float2 outlineUV = TRANSFORM_TEX(textureUV, _OutlineTex);
 
-
+			
 			output.position = vPosition;
 			output.color = input.color;
 			output.atlas =	input.texcoord0;
@@ -228,16 +237,30 @@ SubShader {
 			output.underlayColor =	underlayColor;
 			#endif
 			output.textures = float4(faceUV, outlineUV);
-
+	
 			return output;
 		}
 
+		// Add identifiers
+		float2 _DoodleMaxOffset;  // - How far the UV can be distorted
+		float _DoodleFrameTime;   // - How long does a frame last
+		int _DoodleFrameCount;    // - How many frames per animation
+		float2 _DoodleNoiseScale; // - How noisy should the effect be
 
 		fixed4 PixShader(pixel_t input) : SV_Target
 		{
 			UNITY_SETUP_INSTANCE_ID(input);
 
-			float c = tex2D(_MainTex, input.atlas).a;
+			// Add doodle code
+			float2 uvOffset = 0.0;
+
+		#ifdef DOODLE_ON
+			uvOffset = DoodleTextureOffset(input.atlas, _DoodleMaxOffset, _Time.y,_DoodleFrameTime, _DoodleFrameCount, _DoodleNoiseScale);
+		#endif
+
+			// Add offset
+			float c = tex2D(_MainTex, input.atlas + uvOffset).a;
+		
 
 		#ifndef UNDERLAY_ON
 			clip(c - input.param.x);
@@ -255,7 +278,7 @@ SubShader {
 			half4 outlineColor = _OutlineColor;
 
 			faceColor.rgb *= input.color.rgb;
-
+			
 			faceColor *= tex2D(_FaceTex, input.textures.xy + float2(_FaceUVSpeedX, _FaceUVSpeedY) * _Time.y);
 			outlineColor *= tex2D(_OutlineTex, input.textures.zw + float2(_OutlineUVSpeedX, _OutlineUVSpeedY) * _Time.y);
 
@@ -281,12 +304,14 @@ SubShader {
 		#endif
 
 		#if UNDERLAY_ON
-			float d = tex2D(_MainTex, input.texcoord2.xy).a * input.texcoord2.z;
+			// Add offset
+			float d = tex2D(_MainTex, input.texcoord2.xy + uvOffset).a * input.texcoord2.z;
 			faceColor += input.underlayColor * saturate(d - input.texcoord2.w) * (1 - faceColor.a);
 		#endif
 
 		#if UNDERLAY_INNER
-			float d = tex2D(_MainTex, input.texcoord2.xy).a * input.texcoord2.z;
+			// Add offset
+			float d = tex2D(_MainTex, input.texcoord2.xy + uvOffset).a * input.texcoord2.z;
 			faceColor += input.underlayColor * (1 - saturate(d - input.texcoord2.w)) * saturate(1 - sd) * (1 - faceColor.a);
 		#endif
 
