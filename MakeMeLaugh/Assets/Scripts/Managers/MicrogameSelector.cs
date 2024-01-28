@@ -9,13 +9,15 @@ public class MicrogameSelector : MonoBehaviour
     [SerializeField] private GameObject[] microGameJoke;
     [SerializeField] private MMLGameManager gameManager;
     [SerializeField] private AudioSource jingleIn;
+    private int chosenNo = -1;
     private int randNo;
 
     public bool isChoosing;
     public enum EMicrogames
     {
         eAtoms,
-        eNoah
+        eNoah,
+        eFrog
     }
 
     public EMicrogames microgamesEnum;
@@ -41,6 +43,12 @@ public class MicrogameSelector : MonoBehaviour
     void ChooseMicroGameJoke()
     {
         randNo = Random.Range(0, System.Enum.GetValues(typeof(EMicrogames)).Length);
+
+        while (randNo == chosenNo)
+        {
+            randNo = Random.Range(0, System.Enum.GetValues(typeof(EMicrogames)).Length);
+        }
+        chosenNo = randNo;
         microGameJoke[randNo].SetActive(true);
     }
 

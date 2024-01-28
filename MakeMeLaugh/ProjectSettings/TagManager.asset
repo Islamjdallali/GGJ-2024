@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Cat
   - Obstacle
+  - Frog
+  - Tongue
+  - Fly
   layers:
   - Default
   - TransparentFX
