@@ -11,6 +11,7 @@ public class BombTimer : MonoBehaviour
     [SerializeField] private MicroGamesBase microGameBase;
     private float alpha;
     private float threshold;
+    [SerializeField] private AudioSource tick;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class BombTimer : MonoBehaviour
         alpha = microGameBase.duration / bombSprites.Length;
         threshold = microGameBase.duration - alpha;
         currentImageIndex = 0;
+        tick = GameObject.FindGameObjectWithTag("Clock").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,10 @@ public class BombTimer : MonoBehaviour
             if (currentImageIndex < bombSprites.Length - 1)
             {
                 currentImageIndex++;
+                if (currentImageIndex >= 4)
+                {
+                    tick.Play();
+                }
             }
             threshold = threshold - alpha;
         }

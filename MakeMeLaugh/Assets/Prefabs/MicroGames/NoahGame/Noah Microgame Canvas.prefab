@@ -284,9 +284,12 @@ MonoBehaviour:
   timer: 0
   duration: 8
   gameManager: {fileID: 0}
+  useMusic2: 1
   punchlineGO: {fileID: 4200116509965443619}
   stageAnim: {fileID: 0}
   minigameMusic: {fileID: 0}
+  minigameMusic2: {fileID: 0}
+  minigameWinJingle: {fileID: 0}
   obstacleGO: {fileID: 1494106322899219174, guid: a77456634418ccb46b0aff63ac1ba65d, type: 3}
   spawnTimer: 0
   boat: {fileID: 2922501527076998792}
@@ -708,7 +711,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1

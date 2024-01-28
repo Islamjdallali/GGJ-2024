@@ -9,6 +9,11 @@ TagManager:
   - Frog
   - Tongue
   - Fly
+  - MGWin
+  - MGLose
+  - Clock
+  - Eye
+  - Target
   layers:
   - Default
   - TransparentFX

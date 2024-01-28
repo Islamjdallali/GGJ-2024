@@ -22,6 +22,7 @@ public class MMLGameManager : MonoBehaviour
     [SerializeField] private AudioSource jingleWin;
     [SerializeField] private AudioSource jingleLose;
     [SerializeField] private AudioSource MinigameMusic;
+    [SerializeField] private AudioSource GameoverMusic;
 
     private void Start()
     {
@@ -40,6 +41,7 @@ public class MMLGameManager : MonoBehaviour
             {
                 gameOverUI.SetActive(true);
                 gameOverText.SetActive(true);
+                GameoverMusic.Play();
             }
         }
     }

@@ -17,7 +17,8 @@ public class MicrogameSelector : MonoBehaviour
     {
         eAtoms,
         eNoah,
-        eFrog
+        eFrog,
+        eEyes
     }
 
     public EMicrogames microgamesEnum;

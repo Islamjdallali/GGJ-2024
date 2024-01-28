@@ -9,9 +9,14 @@ public class MicroGamesBase : MonoBehaviour
     public float duration;
     public MMLGameManager gameManager;
 
+    [SerializeField] private bool useMusic2;
+
     [SerializeField] private GameObject punchlineGO;
     [SerializeField] private Animator stageAnim;
     [SerializeField] private AudioSource minigameMusic;
+    [SerializeField] private AudioSource minigameWinJingle;
+
+    private bool isplayed;
 
     public void Init()
     {
@@ -20,8 +25,20 @@ public class MicroGamesBase : MonoBehaviour
         timer = duration;
         gameManager = GameObject.Find("GameManager").GetComponent<MMLGameManager>();
         stageAnim = GameObject.Find("Stage").GetComponent<Animator>();
-        minigameMusic = GameObject.Find("Minigame Music").GetComponent<AudioSource>();
+
+        //hacky solution cus I only have 2 hours left
+        if (useMusic2)
+        {
+            minigameMusic = GameObject.Find("Minigame Music 2").GetComponent<AudioSource>();
+        }
+        else
+        {
+            minigameMusic = GameObject.Find("Minigame Music").GetComponent<AudioSource>();
+        }
+
+        minigameWinJingle = GameObject.FindGameObjectWithTag("MGWin").GetComponent<AudioSource>();
         minigameMusic.Play();
+        isplayed = false;
         //log any null references here
     }
 
@@ -38,6 +55,12 @@ public class MicroGamesBase : MonoBehaviour
         if (isCompleted) 
         {
             punchlineGO.SetActive(true);
+
+            if (!isplayed)
+            {
+                minigameWinJingle.Play();
+                isplayed = true;
+            }
         }
     }
 
@@ -46,6 +69,7 @@ public class MicroGamesBase : MonoBehaviour
         if (isCompleted) 
         {
             gameManager.WinMicroGame();
+
         }
         else
         {
@@ -53,6 +77,7 @@ public class MicroGamesBase : MonoBehaviour
         }
 
         stageAnim.Play("TransitionToStage");
+        minigameMusic.Stop();
 
         Destroy(this.gameObject);
     }
