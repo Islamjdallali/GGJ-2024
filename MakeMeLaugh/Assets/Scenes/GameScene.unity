@@ -1375,6 +1375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 343086669}
   - component: {fileID: 343086670}
+  - component: {fileID: 343086671}
   m_Layer: 0
   m_Name: JingleIn
   m_TagString: Untagged
@@ -1493,6 +1494,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &343086671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343086668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16bf043583e250e45a9031389914c523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &393926311
 GameObject:
   m_ObjectHideFlags: 0
@@ -3820,6 +3833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 816496869}
   - component: {fileID: 816496870}
+  - component: {fileID: 816496871}
   m_Layer: 0
   m_Name: Game Over
   m_TagString: Untagged
@@ -3938,6 +3952,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &816496871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816496868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16bf043583e250e45a9031389914c523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &821537905
 GameObject:
   m_ObjectHideFlags: 0
@@ -4932,6 +4958,7 @@ GameObject:
   m_Component:
   - component: {fileID: 927330456}
   - component: {fileID: 927330457}
+  - component: {fileID: 927330458}
   m_Layer: 0
   m_Name: MicrogameComplete
   m_TagString: MGWin
@@ -5050,6 +5077,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &927330458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927330455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16bf043583e250e45a9031389914c523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &948891627
 GameObject:
   m_ObjectHideFlags: 0
@@ -5362,6 +5401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1001245920}
   - component: {fileID: 1001245921}
+  - component: {fileID: 1001245922}
   m_Layer: 0
   m_Name: Minigame Music
   m_TagString: Untagged
@@ -5480,6 +5520,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1001245922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001245919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16bf043583e250e45a9031389914c523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1004138955
 GameObject:
   m_ObjectHideFlags: 0
@@ -6896,6 +6948,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1274187562}
   - component: {fileID: 1274187563}
+  - component: {fileID: 1274187564}
   m_Layer: 0
   m_Name: Minigame Music 2
   m_TagString: Untagged
@@ -7014,6 +7067,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1274187564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274187561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16bf043583e250e45a9031389914c523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1280220627
 GameObject:
   m_ObjectHideFlags: 0
@@ -8739,6 +8804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1694351758}
   - component: {fileID: 1694351759}
+  - component: {fileID: 1694351760}
   m_Layer: 0
   m_Name: Clock
   m_TagString: Clock
@@ -8857,6 +8923,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1694351760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694351757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16bf043583e250e45a9031389914c523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1711053373
 GameObject:
   m_ObjectHideFlags: 0
@@ -8867,6 +8945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1711053374}
   - component: {fileID: 1711053375}
+  - component: {fileID: 1711053376}
   m_Layer: 0
   m_Name: JingleLose
   m_TagString: Untagged
@@ -8985,6 +9064,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1711053376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711053373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16bf043583e250e45a9031389914c523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1760195634
 GameObject:
   m_ObjectHideFlags: 0
@@ -10051,6 +10142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1884275762}
   - component: {fileID: 1884275763}
+  - component: {fileID: 1884275764}
   m_Layer: 0
   m_Name: JingleWin
   m_TagString: Untagged
@@ -10169,6 +10261,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1884275764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884275761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16bf043583e250e45a9031389914c523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1915641608
 GameObject:
   m_ObjectHideFlags: 0
