@@ -26,7 +26,7 @@ public class NoahMicroGame : MicroGamesBase
             spawnObstacle.transform.localPosition = new Vector3(500, Random.Range(120,-121), 0);
             spawnObstacle.GetComponent<ObstacleBehaviour>().game = this.GetComponent<MicroGamesBase>();
             spawnObstacle.GetComponent<ObstacleBehaviour>().boat = boat;
-            spawnTimer = 2;
+            spawnTimer = 1.5f;
         }
 
         if (boat.boatScore >= 3)

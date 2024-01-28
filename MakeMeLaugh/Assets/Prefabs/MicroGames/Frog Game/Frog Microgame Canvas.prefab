@@ -97,6 +97,7 @@ MonoBehaviour:
   parentCanvas: {fileID: 7113777839487030735}
   col: {fileID: 6417019939212506321}
   anim: {fileID: 6460079988837727428}
+  tongue: {fileID: 6374098536481025997}
   microgame: {fileID: 6190761386292792667}
 --- !u!95 &6460079988837727428
 Animator:
@@ -293,7 +294,6 @@ MonoBehaviour:
   punchlineGO: {fileID: 4200116509965443619}
   stageAnim: {fileID: 0}
   minigameMusic: {fileID: 0}
-  minigameMusic2: {fileID: 0}
   minigameWinJingle: {fileID: 0}
   fliesGO: {fileID: 7850457328088759312, guid: ec823c239786a6c48ad85dd6f4be7a23, type: 3}
   fliesNo: 0
@@ -413,7 +413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daecb66c769607b4e9060ada5ab914ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col: {fileID: 6417019939212506321}
+  col: {fileID: 0}
+  flyTransform: {fileID: 0}
 --- !u!1001 &761400246304156559
 PrefabInstance:
   m_ObjectHideFlags: 0

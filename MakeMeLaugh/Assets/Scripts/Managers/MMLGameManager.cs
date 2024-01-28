@@ -9,6 +9,8 @@ public class MMLGameManager : MonoBehaviour
     public int health;
     public float gameSpeed;
 
+    private bool isGameover;
+
     [SerializeField] private Animator standupAnim;
     [SerializeField] private Animator crowdAnim;
     [SerializeField] private Animator loseTextAnim;
@@ -29,6 +31,7 @@ public class MMLGameManager : MonoBehaviour
         gameOverText.SetActive(false);
         gameOverUI.SetActive(false);
         gameSpeed = 1;
+        isGameover = false;
     }
 
     private void Update()
@@ -41,7 +44,12 @@ public class MMLGameManager : MonoBehaviour
             {
                 gameOverUI.SetActive(true);
                 gameOverText.SetActive(true);
-                GameoverMusic.Play();
+
+                if (!isGameover) 
+                {
+                    GameoverMusic.Play();
+                    isGameover = true;
+                }
             }
         }
     }

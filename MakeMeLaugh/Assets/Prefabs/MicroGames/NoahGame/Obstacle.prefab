@@ -173,7 +173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 0}
-  speed: 500
+  boat: {fileID: 0}
+  speed: 600
 --- !u!1 &4777677250238100542
 GameObject:
   m_ObjectHideFlags: 0

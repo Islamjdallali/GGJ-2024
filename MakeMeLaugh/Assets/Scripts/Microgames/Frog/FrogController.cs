@@ -11,6 +11,7 @@ public class FrogController : MonoBehaviour
     [SerializeField] private Canvas parentCanvas;
     [SerializeField] private BoxCollider col;
     [SerializeField] private Animator anim;
+    [SerializeField] private TongueBehaviour tongue;
     public FrogMicroGame microgame;
     private bool retracting;
     private Vector2 movePos;
@@ -58,6 +59,7 @@ public class FrogController : MonoBehaviour
             yield return null;
         }
 
+        col.center = movePos;
         lr.SetPoints(1, movePos);
         retracting = true;
 
@@ -71,13 +73,17 @@ public class FrogController : MonoBehaviour
         lr.SetPoints(0, transform.localPosition);
         Vector2 newPos;
 
-
         for (; t < time; t += lineSpeed * Time.deltaTime)
         {
             newPos = Vector2.Lerp(movePos, Vector2.zero, t / time);
             col.center = newPos;
             lr.SetPoints(0, Vector2.zero);
             lr.SetPoints(1, newPos);
+            if (tongue.flyTransform != null)
+            {
+                tongue.flyTransform.localPosition = newPos;
+                Debug.Log(tongue.flyTransform.position);
+            }
             yield return null;
         }
 

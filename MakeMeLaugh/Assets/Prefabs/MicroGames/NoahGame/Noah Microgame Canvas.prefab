@@ -288,7 +288,6 @@ MonoBehaviour:
   punchlineGO: {fileID: 4200116509965443619}
   stageAnim: {fileID: 0}
   minigameMusic: {fileID: 0}
-  minigameMusic2: {fileID: 0}
   minigameWinJingle: {fileID: 0}
   obstacleGO: {fileID: 1494106322899219174, guid: a77456634418ccb46b0aff63ac1ba65d, type: 3}
   spawnTimer: 0
@@ -568,7 +567,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &8607616371018096968 stripped
 RectTransform:

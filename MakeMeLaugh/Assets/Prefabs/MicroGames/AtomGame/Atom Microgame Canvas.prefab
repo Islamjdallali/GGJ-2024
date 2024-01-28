@@ -194,11 +194,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCompleted: 0
   timer: 0
-  duration: 10
+  duration: 6
   gameManager: {fileID: 0}
+  useMusic2: 0
   punchlineGO: {fileID: 4200116509965443619}
   stageAnim: {fileID: 0}
   minigameMusic: {fileID: 0}
+  minigameWinJingle: {fileID: 0}
   spawnPoints:
   - {fileID: 7521746483599643600}
   - {fileID: 8224500640551852230}
@@ -726,7 +728,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1

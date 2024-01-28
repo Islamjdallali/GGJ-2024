@@ -1054,7 +1054,7 @@ MonoBehaviour:
   timer: 0
   duration: 5
   gameManager: {fileID: 0}
-  useMusic2: 0
+  useMusic2: 1
   punchlineGO: {fileID: 4200116509965443619}
   stageAnim: {fileID: 0}
   minigameMusic: {fileID: 0}

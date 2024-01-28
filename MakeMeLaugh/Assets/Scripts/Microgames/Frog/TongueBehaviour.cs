@@ -5,7 +5,7 @@ using UnityEngine;
 public class TongueBehaviour : MonoBehaviour
 {
     [SerializeField] private BoxCollider col;
-    private Transform flyTransform;
+    public Transform flyTransform;
     private bool followTongue;
 
     private void Update()
@@ -22,7 +22,7 @@ public class TongueBehaviour : MonoBehaviour
         if (other.tag == "Fly")
         {
             flyTransform = other.transform;
-            followTongue = true;
+            //followTongue = true;
         }
     }
 }
